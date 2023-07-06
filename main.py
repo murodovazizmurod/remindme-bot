@@ -64,11 +64,10 @@ def update():
     if isinstance(all, Reminder):
         all = [all]
     current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    current_time_a = datetime.datetime.now() + datetime.timedelta(minutes=1)
 
     if all:
         for a in all:
-            if a.time.strftime("%Y-%m-%d %H:%M:%S") == current_time or a.time.strftime("%Y-%m-%d %H:%M:%S") == current_time_a.strftime("%Y-%m-%d %H:%M:%S"):
+            if a.time.strftime("%Y-%m-%d %H:%M:%S") == current_time:
                 text = f"""<b>It is time to text to {a.user}!</b>
 <i>The message was '{a.message}'</i>"""
                 app.send_message('me', text, parse_mode=enums.ParseMode.HTML)
